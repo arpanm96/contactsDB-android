@@ -6,7 +6,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/contactImage"
-        android:src="@drawable/contactIcon"/>
+        android:src="@drawable/contacticon"
+        android:maxHeight="30dp"
+        android:maxWidth="30dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,9 +18,9 @@
         android:text="Name"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/contactImage"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="10dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

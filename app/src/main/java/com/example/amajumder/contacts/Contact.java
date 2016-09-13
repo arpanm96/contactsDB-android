@@ -1,9 +1,11 @@
 package com.example.amajumder.contacts;
 
+import java.io.Serializable;
+
 /**
  * Created by amajumder on 9/12/2016.
  */
-public class Contact {
+public class Contact implements Serializable{
     private String name;
     private long phNo;
     private String mailID;

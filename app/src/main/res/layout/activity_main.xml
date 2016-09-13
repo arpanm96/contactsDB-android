@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addbutton"
-        android:src="@drawable/addButton"
+        android:src="@drawable/addbutton"
         android:maxHeight="60dp"
         android:maxWidth="60dp"
         android:scaleType="fitCenter"
