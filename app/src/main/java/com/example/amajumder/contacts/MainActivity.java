@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,6 +25,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Serializable{
 
+    ImageButton add;
     private List<Contact> contactList= new ArrayList<Contact>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
         createList();
         createAdapter();
         createCallToClick();
+        dbAdapter();
 
         addContact();
     }
@@ -62,20 +65,54 @@ public class MainActivity extends AppCompatActivity implements Serializable{
 
                 Intent intent = new Intent(getApplicationContext(),DisplayContact.class);
 
+                Toast.makeText(MainActivity.this, "This is the static view! ", Toast.LENGTH_LONG).show();
                 //Bundle bundle = new Bundle();
                // bundle.putSerializable("data", clicked);
                 intent.putExtra("data",clicked);
+                startActivity(intent);
+                dbAdapter();
+            }
+        });
+    }
+
+    private void dbAdapter() {
+        ListView listView = (ListView)findViewById(R.id.contactsList);
+        DBHelper dbHelper = new DBHelper(this);
+        ArrayList array_list = dbHelper.getAllCotacts();
+        ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1, array_list);
+
+        listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                int arg = arg2 + 1;
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("id",arg);
+
+                Intent intent = new Intent(getApplicationContext(),DisplayDBContact.class);
+                Toast.makeText(MainActivity.this, "This is the DB data view! ", Toast.LENGTH_LONG).show();
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
     }
 
-    /*private void addContact() {
+    private void addContact() {
 
         ListView listView = (ListView)findViewById(R.id.contactsList);
+        add = (ImageButton)findViewById(R.id.addbutton);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(getApplicationContext(),AddContact.class);
+                // intent.putExtra("list",listView);
+                startActivity(intent);
+            }
+        });
 
-    }*/
+    }
 
 
 

@@ -28,7 +28,6 @@ public class DisplayContact extends AppCompatActivity{
         ImageView icon = (ImageView) findViewById(R.id.displayImage);
 
         Intent intent = this.getIntent();
-        // Bundle bundle = intent.getExtras();
         Contact cur = (Contact) intent.getSerializableExtra("data");
         name.setText(cur.getName());
         phNo.setText(""+cur.getPhNo());

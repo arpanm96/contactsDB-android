@@ -35,7 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
         db.execSQL(
                 "create table contacts " +
-                        "(id integer primary key, name text,phone text,email text, street text,place text)"
+                        "(id integer primary key, name text,phone text,email text)"
         );
     }
 

@@ -41,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADD"
+        android:id="@+id/addContact"
         android:layout_below="@+id/email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="104dp" />
