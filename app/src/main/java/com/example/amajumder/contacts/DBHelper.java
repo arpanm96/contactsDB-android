@@ -10,6 +10,8 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by amajumder on 9/12/2016.
@@ -59,10 +61,23 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getData(int id){
         SQLiteDatabase db = this.getReadableDatabase();
+        int _id = 0;
+       // Cursor res =  db.rawQuery( "select * from contacts where id="+id+"", null );
+        Cursor cursor =  db.rawQuery( "select * from contacts", null );
+        if (cursor.moveToPosition(id-1) && cursor != null) {
+            _id = cursor.getInt(cursor.getColumnIndex("id"));
+            Log.e("error","ID : " + id + " _ID " + _id);
+            Cursor res =  db.rawQuery( "select * from contacts where id="+_id+"", null );
+            return res;
+        }
+        return null;
+    }
+
+    public Cursor getEditData(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "select * from contacts where id="+id+"", null );
         return res;
     }
-
     public int numberOfRows(){
         SQLiteDatabase db = this.getReadableDatabase();
         int numRows = (int) DatabaseUtils.queryNumEntries(db, CONTACTS_TABLE_NAME);

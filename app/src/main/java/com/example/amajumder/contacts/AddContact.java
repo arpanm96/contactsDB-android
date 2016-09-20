@@ -43,6 +43,8 @@ public class AddContact extends AppCompatActivity{
                 DBHelper dbHelper = new DBHelper(AddContact.this);
                 dbHelper.insertContact(name,phNo,email);
                 Toast.makeText(AddContact.this, "Contact added!", Toast.LENGTH_SHORT).show();
+
+                finish();
             }
         });
 
